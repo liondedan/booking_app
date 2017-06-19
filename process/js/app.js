@@ -10,6 +10,7 @@ var MainInterface = createReactClass({
   getInitialState: function() {
     return {
       appTitle: "[Dynamic]",
+      today: moment(new Date()).format("YYYY-MM-DD"),
       dayQuery: moment(new Date()).format("YYYY-MM-DD"),
       data: [
         {
@@ -89,7 +90,7 @@ var MainInterface = createReactClass({
  
     return (
         <div className="interface">
-          <ControlHeader title={ this.state.appTitle } changeDay={this._changeDay} dayQuery={this.state.dayQuery}/>
+          <ControlHeader title={ this.state.appTitle } changeDay={this._changeDay} today={this.state.today} dayQuery={this.state.dayQuery}/>
           <ul>
             {bookingsObject} 
           </ul>
@@ -101,4 +102,4 @@ var MainInterface = createReactClass({
 ReactDOM.render(
   <MainInterface />, 
   document.getElementById('app')  
-);    
+);   
