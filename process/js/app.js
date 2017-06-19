@@ -5,48 +5,49 @@ var createReactClass = require('create-react-class');
 var ControlHeader = require('./ControlHeader');
 var BookingTable = require('./BookingTable');
 
+
 var MainInterface = createReactClass({
   getInitialState: function() {
     return {
       appTitle: "[Dynamic]",
-      dayQuery: "2016-06-20 15:30",
+      dayQuery: moment(new Date()).format("YYYY-MM-DD"),
       data: [
         {
           "pitch": 1,
           "firstName": "Buffy",
           "email": "Hassum Harrod",
-          "arrivalDate": "2016-06-20 15:30"
+          "arrivalDate": "2017-06-19"
         },
         {
           "pitch": 1,
           "firstName": "Spot",
           "email": "Constance Smith",
-          "arrivalDate": "2016-06-24 08:30"
+          "arrivalDate": "2017-06-19"
         },
         {
           "pitch": 2,
           "firstName": "Troy",
           "email": "Constance Smith",
-          "arrivalDate": "2016-06-24 08:30"
+          "arrivalDate": "2017-06-19"
         },
         {
           "pitch": 2,
           "firstName": "Goldie",
           "email": "Barot Bellingham",
-          "arrivalDate": "2016-06-20 15:30"
+          "arrivalDate": "2017-06-19"
         },
         {
           "pitch": 1,
           "firstName": "Rusty",
           "email": "Barot Bellingham",
-          "arrivalDate": "2016-06-20 15:30"
+          "arrivalDate": "2017-06-20"
         },
         {
-          "pitch": 1,
+          "pitch": 2,
           "firstName": "Mitten",
           "email": "Hillary Goldwyn",
-          "arrivalDate": "2016-06-21 9:15"
-        }
+          "arrivalDate": "2017-06-20"
+        } 
       ],
     } 
   },
@@ -63,19 +64,15 @@ var MainInterface = createReactClass({
   //   this.serverRequest.abort();
   // }, 
 
-  changeDay: function(date) {
+  _changeDay: function(date) {
     this.setState({dayQuery: date})
-  },
-
-  changeTitle: function(title) {
-    this.setState({title});
   },
 
   _funcType: function (name) {
     this.setState({title:name}); 
   }, 
 
-  renderByQuery: function(item, index) {
+  _renderByQuery: function(item, index) {
     if (item.arrivalDate === this.state.dayQuery) {
       var bookingOnDay = [];
       bookingOnDay.push(item);
@@ -86,14 +83,13 @@ var MainInterface = createReactClass({
   },
 
   render: function() {
-    var bookingsObject = this.state.data;
-    bookingsObject = bookingsObject.map(function(item, index) {
-      return this.renderByQuery(item, index);
+    bookingsObject = this.state.data.map(function(item, index) {
+      return this._renderByQuery(item, index);
     }.bind(this));  
-
+ 
     return (
         <div className="interface">
-          <ControlHeader title={ this.state.appTitle } changeDay={this.changeDay} />
+          <ControlHeader title={ this.state.appTitle } changeDay={this._changeDay} dayQuery={this.state.dayQuery}/>
           <ul>
             {bookingsObject} 
           </ul>
@@ -105,4 +101,4 @@ var MainInterface = createReactClass({
 ReactDOM.render(
   <MainInterface />, 
   document.getElementById('app')  
-);     
+);    
