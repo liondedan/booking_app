@@ -5,10 +5,24 @@ var BookingRow = require('./BookingRow');
 
 var BookingTable = createReactClass({
 	_handleDelete: function () {
-		this.props.deleteItem(this.props.index);
+		this.props.deleteBooking(this.props.index);
 	},
 
+  _renderByQuery: function(item, index) {
+    if (item.arrivalDate === this.props.dayQuery) {
+      var bookingOnDay = [];
+      bookingOnDay.push(item); 
+      return (
+         <BookingRow deleteBooking={this.props.deleteBooking} booking={bookingOnDay} key={index} index={index} />
+      )
+    }
+  },
+
   render: function() {
+    var bookingItems = this.props.bookingData.map(function(item, index) {
+      return this._renderByQuery(item, index);
+    }.bind(this));  
+
     return (
     	<table className="table table-hover">
     	  <thead>
@@ -21,7 +35,7 @@ var BookingTable = createReactClass({
     	    </tr>
     	  </thead>
     	  <tbody>
-    	  	<BookingRow booking={this.props.booking} deleteItem={this.props.deleteItem} />
+    	  	{bookingItems}
     	  </tbody>
     	</table>
     )

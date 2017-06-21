@@ -9,7 +9,6 @@ var AddBooking = require('./AddBooking');
 var MainInterface = createReactClass({
   getInitialState: function() {
     return {
-      appTitle: "[Dynamic]",
       today: moment(new Date()).format("YYYY-MM-DD"),
       dayQuery: moment(new Date()).format("YYYY-MM-DD"),
       data: [],
@@ -37,12 +36,12 @@ var MainInterface = createReactClass({
     var temptData = this.state.data;
     temptData.push(temptBooking);
     this.setState({
-      data: temptData,
+      data: temptData, 
       addFormVisibility: false, 
     });
   },
 
-  _deleteItem: function (item) {
+  _deleteBooking: function (item) {
     var dataArray = this.state.data;
     dataArray.splice(item, 1);
     this.setState({
@@ -56,26 +55,8 @@ var MainInterface = createReactClass({
       addFormVisibility: currentState
     })
   },
-
-  _funcType: function (name) {
-    this.setState({title:name}); 
-  },   
    
-  _renderByQuery: function(item, index) {
-    if (item.arrivalDate === this.state.dayQuery) {
-      var bookingOnDay = [];
-      bookingOnDay.push(item); 
-      return (
-         <BookingTable deleteItem={this._deleteItem} booking={bookingOnDay} key={index} index={index} />
-      )
-    }
-  },
-  
   render: function() { 
-    bookingsObject = this.state.data.map(function(item, index) {
-      return this._renderByQuery(item, index);
-    }.bind(this));  
-  
     return (
           <div className="row">
             <ControlHeader 
@@ -84,9 +65,11 @@ var MainInterface = createReactClass({
               today={this.state.today} 
               dayQuery={this.state.dayQuery}
             />
-            
-            {bookingsObject} 
-
+            <BookingTable 
+              deleteBooking={this._deleteBooking} 
+              bookingData={this.state.data} 
+              dayQuery={this.state.dayQuery}
+            />
             <AddBooking 
               addBooking={this._addBooking} 
               addDisplay={this._addDisplay} 

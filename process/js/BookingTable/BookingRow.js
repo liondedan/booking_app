@@ -1,6 +1,4 @@
 var React = require('react');
-var createReactClass = require('create-react-class');
-
 
 function BookingRow (props) {
 	return (
@@ -10,7 +8,8 @@ function BookingRow (props) {
 				<td>{props.booking[0].email}</td>
 				<td>{props.booking[0].arrivalDate}</td>
 				<td>
-				<button onClick={props.deleteItem} className="btn btn-danger">Delete Booking</button></td>
+					<button onClick={props.deleteBooking} className="btn btn-danger">Delete Booking</button>
+				</td>
 			</tr>
 	)
 }

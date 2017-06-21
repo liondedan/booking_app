@@ -8,6 +8,8 @@ var AddBooking = createReactClass({
 	_handleSubmit: function (e) {
 		var tempBooking = {
 			pitch: this.refs.inputPitch.value,
+			firstName: this.refs.inputFirstName.value,
+			email: this.refs.inputEmail.value,
 			arrivalDate: this.refs.inputDate.value,
 		}
 		this.props.addBooking(tempBooking);
