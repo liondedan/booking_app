@@ -42,9 +42,7 @@ var ViewBooking = createReactClass({
 		} else {
 			formVisibility = {"display": "none"};
 		}
-
-    console.log(this.props.booking);
-
+    
     return (
     	<div>
   	    <form style={formVisibility}>
@@ -52,26 +50,26 @@ var ViewBooking = createReactClass({
   	    	<div className="form-group row">
   	    	  <label className="col-2 col-form-label">Pitch</label>
   	    	  <div className="col-10">
-  	    	    <input defaultValue={this.props.booking.pitch} onChange={this._handleInputChange} className="form-control" name="pitch" ref="inputPitch" type="number" id="example-number-input"/>
+  	    	    <input value={this.props.booking.pitch} onChange={this._handleInputChange} className="form-control" name="pitch" ref="inputPitch" type="number" id="example-number-input"/>
   	    	  </div>
   	    	</div>
   	      <div className="form-group row">
   	        <label  className="col-2 col-form-label">First Name</label>
   	        <div className="col-10">
-  	          <input defaultValue={this.props.booking.firstName} onChange={this._handleInputChange} className="form-control" ref="firstName" name="firstName" type="text" id="example-text-input"/>
+  	          <input value={this.props.booking.firstName} onChange={this._handleInputChange} className="form-control" ref="firstName" name="firstName" type="text" id="example-text-input"/>
   	        </div>
   	      </div>
   	      <div className="form-group row">
   	        <label className="col-2 col-form-label">Email</label>
   	        <div className="col-10">
-  	          <input defaultValue={this.props.booking.email} onChange={this._handleInputChange} className="form-control" ref="inputEmail" type="email"  name="email" id="example-email-input"/>
+  	          <input value={this.props.booking.email} onChange={this._handleInputChange} className="form-control" ref="inputEmail" type="email"  name="email" id="example-email-input"/>
   	        </div>
   	      </div>
   	      
   	      <div className="form-group row">
   	        <label className="col-2 col-form-label">Date</label>
   	        <div className="col-10">
-  	          <input defaultValue={this.props.booking.arrivalDate} onChange={this._handleInputChange} className="form-control" ref="arrivalDate" name="arrivalDate" type="date" id="example-date-input"/>
+  	          <input value={this.props.booking.arrivalDate} onChange={this._handleInputChange} className="form-control" ref="arrivalDate" name="arrivalDate" type="date" id="example-date-input"/>
   	        </div>
   	      </div>
           <button type="submit" className="btn btn-primary" onClick={this._handleUpdateBooking}>Save changes</button>

@@ -3,8 +3,6 @@ var ReactDOM = require('react-dom');
 var createReactClass = require('create-react-class');
 
 var AddBooking = createReactClass({
-
-
 	_handleSubmit: function (e) {
 		var tempBooking = {
 			pitch: this.refs.inputPitch.value,
