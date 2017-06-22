@@ -8,7 +8,10 @@ function BookingRow (props) {
 				<td>{props.booking[0].email}</td>
 				<td>{props.booking[0].arrivalDate}</td>
 				<td>
-					<button onClick={props.deleteBooking} className="btn btn-danger">Delete Booking</button>
+					<button onClick={props.deleteBooking} className="btn btn-danger">Delete</button>
+				</td>
+				<td>
+					<button onClick={props.viewBooking} className="btn btn-secondary">View</button>
 				</td>
 			</tr>
 	)

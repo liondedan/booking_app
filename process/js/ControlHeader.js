@@ -17,10 +17,9 @@ var ControlHeader = createReactClass({
   render: function() {
     return (
 		<div>
-	      <h2>{this.props.title}</h2>
 	      <h5>Today: {this.props.dayQuery}</h5>
-	      <button className="btn btn-primary" onClick={()=>this.props.changeDay(this.props.today)}>Today</button>
 	      <button className="btn btn-secondary" onClick={()=>this.handleDateChange(-1)}>Previous Day</button>
+        <button className="btn btn-primary" onClick={()=>this.props.changeDay(this.props.today)}>Today</button>
 	      <button className="btn btn-secondary" onClick={()=>this.handleDateChange(1)}>Next Day</button>
 	      <div className="form-group row">
 	    	  <div className="col-10">

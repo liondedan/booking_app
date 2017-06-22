@@ -8,12 +8,17 @@ var BookingTable = createReactClass({
 		this.props.deleteBooking(this.props.index);
 	},
 
+  _handleView: function () {
+    this.props.viewBooking(this.props.index);
+    console.log(this.props.index);
+  },
+
   _renderByQuery: function(item, index) {
     if (item.arrivalDate === this.props.dayQuery) {
       var bookingOnDay = [];
       bookingOnDay.push(item); 
       return (
-         <BookingRow deleteBooking={this.props.deleteBooking} booking={bookingOnDay} key={index} index={index} />
+         <BookingRow deleteBooking={this.props.deleteBooking} viewBooking={this.props.viewBooking} booking={bookingOnDay} key={index} index={index} />
       )
     }
   },
@@ -32,6 +37,7 @@ var BookingTable = createReactClass({
     	      <th>Last Name</th>
     	      <th>Username</th>
     	      <th></th>
+            <th></th>
     	    </tr>
     	  </thead>
     	  <tbody>

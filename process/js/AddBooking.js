@@ -31,6 +31,7 @@ var AddBooking = createReactClass({
 	  	<div>
 	  		{!this.props.addFormVisibility ? <button onClick={this._handleAddDisplay} className="btn btn-success">Add Booking</button>: null}	  	
 		    <form style={formVisibility} onSubmit={this._handleSubmit}>
+	    		<h4>Add Booking</h4>
 		    	<div className="form-group row">
 		    	  <label className="col-2 col-form-label">Pitch</label>
 		    	  <div className="col-10">
