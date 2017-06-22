@@ -17,7 +17,7 @@ var BookingTable = createReactClass({
       var bookingOnDay = [];
       bookingOnDay.push(item); 
       return (
-         <BookingRow deleteBooking={this._handleDelete} viewBooking={this._handleView} booking={bookingOnDay} key={index} index={index} />
+         <BookingRow viewBooking={this._handleView} booking={bookingOnDay} key={index} index={index} />
       )
     }
   },
@@ -28,15 +28,14 @@ var BookingTable = createReactClass({
     }.bind(this));  
 
     return (
-    	<table className="table table-hover">
+    	<table className="table table-striped table-bordered">
     	  <thead>
     	    <tr>
     	      <th>#</th>
-    	      <th>First Name</th>
-    	      <th>Last Name</th>
-    	      <th>Username</th>
-    	      <th></th>
-            <th></th>
+    	      <th>Name</th>
+    	      <th>Email</th>
+    	      <th>Arrival</th>
+    	      <th>Edit</th>
     	    </tr>
     	  </thead>
     	  <tbody>

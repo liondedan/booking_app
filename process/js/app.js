@@ -43,12 +43,14 @@ var MainInterface = createReactClass({
     });
   },
 
-  _deleteBooking: function (item) {
+  _deleteBooking: function () {
+    var index = this.state.bookingIndex;
     var dataArray = this.state.data;
-    dataArray.splice(item, 1);
+    dataArray.splice(index, 1);
     this.setState({
       data: dataArray,
     });
+    this._updateClose();
   },
 
   _viewBooking: function (itemIndex) { 
@@ -91,6 +93,7 @@ var MainInterface = createReactClass({
         booking={this.state.data[this.state.bookingIndex]}
         updateBooking={this._updateBooking}
         updateClose={this._updateClose}
+        deleteBooking={this._deleteBooking}
       />
     } else {
       var view = null

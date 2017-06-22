@@ -36,13 +36,18 @@ var ViewBooking = createReactClass({
     e.preventDefault();
   },
 
+  _handleDelete: function (e) {
+    this.props.deleteBooking();
+    e.preventDefault();
+  },
+
   render: function() { 
   	if (this.props.viewFormVisibility) {
 			formVisibility = {"display": "block"};  
 		} else {
 			formVisibility = {"display": "none"};
 		}
-    
+
     return (
     	<div>
   	    <form style={formVisibility}>
@@ -74,6 +79,7 @@ var ViewBooking = createReactClass({
   	      </div>
           <button type="submit" className="btn btn-primary" onClick={this._handleUpdateBooking}>Save changes</button>
           <button className="btn btn-danger" onClick={this._handleUpdateClose}>Close</button>
+          <button onClick={this._handleDelete} className="btn btn-danger">Delete</button>
   	  	</form>
   	  </div>
     )
