@@ -8,8 +8,10 @@
   },
   "author": "Ray Villalobos",
   "devDependencies": {
+    "babel-preset-env": "^1.5.2",
     "create-react-class": "^15.5.2",
     "gulp": "^3.8.8",
+    "gulp-babel": "^6.1.2",
     "gulp-browserify": "^0.5.1",
     "gulp-react": "^3.1.0",
     "gulp-webserver": "^0.8.8",

@@ -16,7 +16,7 @@ var AddBooking = createReactClass({
 		e.preventDefault();
 	}, 
 
-	_handleAddDisplay: function () {
+	_handleDisplay: function () {
 		this.props.addDisplay();
 	},
 
@@ -29,7 +29,7 @@ var AddBooking = createReactClass({
 
 	  return (
 	  	<div>
-	  		{!this.props.addFormVisibility ? <button onClick={this._handleAddDisplay} className="btn btn-success">Add Booking</button>: null}	  	
+	  		{!this.props.addFormVisibility ? <button onClick={this._handleDisplay} className="btn btn-success">Add Booking</button>: null}	  	
 		    <form style={formVisibility} onSubmit={this._handleSubmit}>
 	    		<h4>Add Booking</h4>
 		    	<div className="form-group row">
@@ -50,15 +50,13 @@ var AddBooking = createReactClass({
 		          <input className="form-control" ref="inputEmail" type="email" id="example-email-input"/>
 		        </div>
 		      </div>
-		      
 		      <div className="form-group row">
 		        <label className="col-2 col-form-label">Date</label>
 		        <div className="col-10">
 		          <input className="form-control" ref="inputDate" type="date" id="example-date-input"/>
 		        </div>
 		      </div>
-
-		      <button onClick={this._handleAddDisplay} type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+		      <button onClick={this._handleDisplay} type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
 		      <button type="submit" className="btn btn-primary" onClick={this._handleSubmit}>Save changes</button>
 		  	</form>
 		  </div>

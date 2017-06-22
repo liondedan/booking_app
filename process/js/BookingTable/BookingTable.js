@@ -4,13 +4,12 @@ var createReactClass = require('create-react-class');
 var BookingRow = require('./BookingRow');
 
 var BookingTable = createReactClass({
-	_handleDelete: function () {
-		this.props.deleteBooking(this.props.index);
+	_handleDelete: function (position) {
+		this.props.deleteBooking(position);
 	},
 
-  _handleView: function () {
-    this.props.viewBooking(this.props.index);
-    console.log(this.props.index);
+  _handleView: function (position) {
+    this.props.viewBooking(position);
   },
 
   _renderByQuery: function(item, index) {
@@ -18,7 +17,7 @@ var BookingTable = createReactClass({
       var bookingOnDay = [];
       bookingOnDay.push(item); 
       return (
-         <BookingRow deleteBooking={this.props.deleteBooking} viewBooking={this.props.viewBooking} booking={bookingOnDay} key={index} index={index} />
+         <BookingRow deleteBooking={this._handleDelete} viewBooking={this._handleView} booking={bookingOnDay} key={index} index={index} />
       )
     }
   },

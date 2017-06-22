@@ -51,20 +51,49 @@ var MainInterface = createReactClass({
     });
   },
 
-  _viewBooking: function (itemIndex) {
-    console.log(this.state.data);
-    console.log(itemIndex);
-    return this.state.data[itemIndex];
+  _viewBooking: function (itemIndex) { 
+    this.setState({
+      viewFormVisibility: true,
+      bookingIndex: itemIndex, 
+    })
   },
- 
+
+  _updateBooking: function (updatedBooking) {
+    var partialState = {};
+    this.state.data[this.state.bookingIndex] = updatedBooking;
+    this.setState(partialState);
+
+    this.setState({
+      bookingIndex: null,
+      viewFormVisibility: false,
+    })
+  },
+
+  _updateClose: function () {
+    this.setState({
+      bookingIndex: null,
+      viewFormVisibility: false,
+    })
+  },
+  
   _addDisplay: function () {
     var currentState = !this.state.addFormVisibility;
     this.setState({
       addFormVisibility: currentState
     })
   },
-   
+    
   render: function() { 
+    if(this.state.viewFormVisibility) {
+      var view = <ViewBooking 
+        viewFormVisibility={this.state.viewFormVisibility}
+        booking={this.state.data[this.state.bookingIndex]}
+        updateBooking={this._updateBooking}
+        updateClose={this._updateClose}
+      />
+    } else {
+      var view = null
+    }
 
     return (
           <div>
@@ -79,9 +108,9 @@ var MainInterface = createReactClass({
               bookingData={this.state.data} 
               dayQuery={this.state.dayQuery}
             />
-            <ViewBooking 
-              viewFormVisibility={this.state.viewFormVisibility}
-            />
+
+            {view}
+
             <AddBooking  
               addBooking={this._addBooking} 
               addDisplay={this._addDisplay} 
