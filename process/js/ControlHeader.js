@@ -23,7 +23,7 @@ var ControlHeader = createReactClass({
 	      <button className="btn btn-secondary" onClick={()=>this.handleDateChange(1)}>Next Day</button>
 	      <div className="form-group row">
 	    	  <div className="col-10">
-			 			<input className="form-control" defaultValue={this.props.dayQuery} id="datePicker" type="date" name="datePicker" onClick={this.handleDatePicker}  />
+			 			<input className="form-control" value={this.props.dayQuery} id="datePicker" type="date" name="datePicker" onChange={this.handleDatePicker}  />
 			 		</div>
 			 	</div>
 	 	</div>

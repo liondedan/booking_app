@@ -55,6 +55,7 @@ var MainInterface = createReactClass({
     this.setState({
       viewFormVisibility: true,
       bookingIndex: itemIndex, 
+      addFormVisibility: false, 
     })
   },
 
