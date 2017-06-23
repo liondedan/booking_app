@@ -5,7 +5,7 @@ var createReactClass = require('create-react-class');
 var ControlHeader = require('./ControlHeader');
 var BookingTable = require('./BookingTable/BookingTable');
 var ViewBooking = require('./ViewBooking');
-var AddBooking = require('./AddBooking');
+var AddBooking = require('./AddBooking/AddBooking');
 
 var MainInterface = createReactClass({
   getInitialState: function() {
@@ -23,7 +23,7 @@ var MainInterface = createReactClass({
       this.setState({
         data: result 
       });
-    }.bind(this));
+    }.bind(this)); 
   },
 
   componentWillUnmount: function() {
@@ -70,11 +70,11 @@ var MainInterface = createReactClass({
       bookingIndex: null,
       viewFormVisibility: false,
     })
-  },
+  }, 
 
   _updateClose: function () {
     this.setState({
-      bookingIndex: null,
+      bookingIndex: null, 
       viewFormVisibility: false,
     })
   },
@@ -84,16 +84,16 @@ var MainInterface = createReactClass({
     this.setState({
       addFormVisibility: currentState
     })
-  },
+  }, 
     
-  render: function() { 
+  render: function() {  
     if(this.state.viewFormVisibility) {
       var view = <ViewBooking 
         viewFormVisibility={this.state.viewFormVisibility}
         booking={this.state.data[this.state.bookingIndex]}
         updateBooking={this._updateBooking}
         updateClose={this._updateClose}
-        deleteBooking={this._deleteBooking}
+        deleteBooking={this._deleteBooking} 
       />
     } else {
       var view = null
