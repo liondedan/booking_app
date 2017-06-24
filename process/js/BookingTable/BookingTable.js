@@ -13,31 +13,32 @@ var BookingTable = createReactClass({
   },
 
   _renderByQuery: function(item, index) {
-    if (item.arrivalDate === this.props.dayQuery) {
+    if (item.departureDate > this.props.dayQuery && item.arrivalDate <= this.props.dayQuery) {
       var bookingOnDay = [];
       bookingOnDay.push(item); 
       return (
-         <BookingRow viewBooking={this._handleView} booking={bookingOnDay} key={index} index={index} />
+         <BookingRow prettyDate={this.props.prettyDate}  viewBooking={this._handleView} booking={bookingOnDay} key={index} index={index} />
       )
     }
-  },
+  }, 
 
   render: function() {
     var bookingItems = this.props.bookingData.map(function(item, index) {
       return this._renderByQuery(item, index);
     }.bind(this));  
 
-    return (
-    	<table className="table table-striped table-bordered">
+    return ( 
+    	<table className="table table-bordered table-hover table-sm">
     	  <thead>
     	    <tr>
     	      <th>#</th>
     	      <th>Name</th>
     	      <th>Email</th>
-    	      <th>Arrival</th>
-    	      <th>Edit</th>
+            <th>Arrival</th>
+            <th>Departure</th>
+            <th>Edit</th>
     	    </tr>
-    	  </thead>
+    	  </thead> 
     	  <tbody>
     	  	{bookingItems}
     	  </tbody>

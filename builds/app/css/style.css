@@ -8,3 +8,7 @@
 	display: block;
 	color: grey;
 }
+
+.global_date_picker {
+	max-width: 260px;
+}

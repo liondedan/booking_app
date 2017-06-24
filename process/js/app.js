@@ -36,7 +36,7 @@ var MainInterface = createReactClass({
 
   _addBooking: function(temptBooking) {
     var temptData = this.state.data;
-    temptData.push(temptBooking);
+    temptData.push(temptBooking); 
     this.setState({ 
       data: temptData, 
       addFormVisibility: false, 
@@ -45,10 +45,10 @@ var MainInterface = createReactClass({
 
   _deleteBooking: function () {
     var index = this.state.bookingIndex;
-    var dataArray = this.state.data;
+    var dataArray = this.state.data; 
     dataArray.splice(index, 1);
     this.setState({
-      data: dataArray,
+      data: dataArray, 
     });
     this._updateClose();
   },
@@ -85,6 +85,10 @@ var MainInterface = createReactClass({
       addFormVisibility: currentState
     })
   }, 
+
+  _prettyDate: function (sqlDate) {
+    return moment(sqlDate).format('ddd, D MMM');
+  },
     
   render: function() {  
     if(this.state.viewFormVisibility) {
@@ -99,29 +103,31 @@ var MainInterface = createReactClass({
       var view = null
     }
 
-    return (
+    return (  
           <div>
             <ControlHeader 
               changeDay={this._changeDay} 
               today={this.state.today} 
               dayQuery={this.state.dayQuery}
+              prettyDate={this._prettyDate} 
             />
             <BookingTable 
               deleteBooking={this._deleteBooking} 
               viewBooking={this._viewBooking} 
               bookingData={this.state.data} 
               dayQuery={this.state.dayQuery}
+              prettyDate={this._prettyDate} 
             />
-
+ 
             {view}
 
-            <AddBooking  
+            <AddBooking   
               addBooking={this._addBooking} 
               addDisplay={this._addDisplay} 
               addFormVisibility={this.state.addFormVisibility}
             />
         </div> 
-      ) 
+      )  
     }      
 });   
    
@@ -129,3 +135,4 @@ ReactDOM.render(
   <MainInterface />,   
   document.getElementById('app')    
 );        
+ 

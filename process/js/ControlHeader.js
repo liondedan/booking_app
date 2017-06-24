@@ -15,21 +15,28 @@ var ControlHeader = createReactClass({
   },
 
   render: function() {
+
+    var todayPretty = this.props.prettyDate(this.props.dayQuery);
     return (
 		<div>
-	      <h5>Today: {this.props.dayQuery}</h5>
-	      
+        <h5>{todayPretty}</h5>
 	      <div className="form-group row">
-	    	  <div className="col-12 col-sm-5 col-md-4 col-lg-3">
-			 			<input className="form-control" value={this.props.dayQuery} id="datePicker" type="date" name="datePicker" onChange={this.handleDatePicker}  />
-			 		</div>
-          <div className="col-12 col-sm-7 col-md-8 col-lg-6">
+          <div className="col-4">        
             <div className="btn-group" role="group" aria-label="Basic example">
-              <button className="btn btn-secondary" onClick={()=>this.handleDateChange(-1)}>Previous Day</button>
-              <button className="btn btn-primary" onClick={()=>this.props.changeDay(this.props.today)}>Today</button>
-              <button className="btn btn-secondary" onClick={()=>this.handleDateChange(1)}>Next Day</button>
+              <button className="btn btn-secondary btn-sm" onClick={()=>this.handleDateChange(-1)}>
+                <i className="fa fa-backward" aria-hidden="true"></i>
+              </button>
+              <button className="btn btn-primary btn-sm" onClick={()=>this.props.changeDay(this.props.today)}>
+                <i className="fa fa-circle" aria-hidden="true"></i>
+              </button>
+              <button className="btn btn-secondary btn-sm" onClick={()=>this.handleDateChange(1)}>
+                <i className="fa fa-forward" aria-hidden="true"></i>
+              </button>
             </div>
           </div>
+	    	  <div className="col-8">
+			 			<input className="form-control form-control-sm global_date_picker pull-right" value={this.props.dayQuery} id="datePicker" type="date" name="datePicker" onChange={this.handleDatePicker}  />
+			 		</div>
 			 	</div>
 	 	</div>
     )
