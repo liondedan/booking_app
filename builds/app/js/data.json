@@ -3,72 +3,64 @@
     "pitch": 1,
     "firstName": "Buffy",
     "email": "Hassum Harrod",
-    "arrivalDate": "2017-06-23",
+    "arrivalDate": "2017-06-25",
     "departureDate": "2017-06-27",
     "paid": "no"
   },
   {
-    "pitch": 1,
+    "pitch": 2,
     "firstName": "Spot",
     "email": "Constance Smith",
-    "arrivalDate": "2017-06-23",
+    "arrivalDate": "2017-06-25",
     "departureDate": "2017-06-30",
     "paid": "yes"
   },
   {
-    "pitch": 2,
+    "pitch": 4,
     "firstName": "Troy",
     "email": "Constance Smith",
-   "arrivalDate": "2017-06-22",
-    "departureDate": "2017-06-25",
+    "arrivalDate": "2017-06-25",
+    "departureDate": "2017-06-27",
     "paid": "yes"
   },
   {
-    "pitch": 2,
+    "pitch": 8,
     "firstName": "Goldie",
     "email": "Barot Bellingham",
-    "arrivalDate": "2017-06-21",
-    "departureDate": "2017-06-25",
+    "arrivalDate": "2017-06-25",
+    "departureDate": "2017-06-27",
     "paid": "yes"
   },
   {
-    "pitch": 1,
-    "firstName": "Rusty",
-    "email": "Barot Bellingham",
-    "arrivalDate": "2017-06-21",
-    "departureDate": "2017-06-25",
-    "paid": "no"
-  },
-  {
-    "pitch": 2,
+    "pitch": 9,
     "firstName": "Mitten",
     "email": "Hillary Goldwyn",
-    "arrivalDate": "2017-06-21",
-    "departureDate": "2017-06-25",
-    "paid": "no"
-  },
-  {
-    "pitch": 2,
-    "firstName": "Goldie",
-    "email": "Barot Bellingham",
-    "arrivalDate": "2017-06-22",
-    "departureDate": "2017-06-25",
-    "paid": "no"
-  },
-  {
-    "pitch": 1,
-    "firstName": "Rusty",
-    "email": "Barot Bellingham",
-    "arrivalDate": "2017-06-23",
+    "arrivalDate": "2017-06-25",
     "departureDate": "2017-06-30",
-    "paid": "yes"
+    "paid": "no"
   },
   {
-    "pitch": 2,
+    "pitch": 3,
     "firstName": "Mitten",
     "email": "Hillary Goldwyn",
-    "arrivalDate": "2017-06-21",
-    "departureDate": "2017-06-25",
-    "paid": "yes"
-  } 
+    "arrivalDate": "2017-06-25",
+    "departureDate": "2017-06-30",
+    "paid": "no"
+  },
+  {
+    "pitch": 5,
+    "firstName": "Mitten",
+    "email": "Hillary Goldwyn",
+    "arrivalDate": "2017-06-25",
+    "departureDate": "2017-06-30",
+    "paid": "no"
+  },
+  {
+    "pitch": 12,
+    "firstName": "Mitten",
+    "email": "Hillary Goldwyn",
+    "arrivalDate": "2017-06-25",
+    "departureDate": "2017-06-30",
+    "paid": "no"
+  }
 ]

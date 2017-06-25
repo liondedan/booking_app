@@ -16,7 +16,7 @@ var MainInterface = createReactClass({
       addFormVisibility: false,
       viewFormVisibility: false,
     } 
-  }, 
+  },  
  
   componentDidMount: function() {
     this.serverRequest = $.get('./js/data.json', function(result) {
@@ -89,7 +89,7 @@ var MainInterface = createReactClass({
   _prettyDate: function (sqlDate) {
     return moment(sqlDate).format('ddd, D MMM');
   },
-    
+      
   render: function() {  
     if(this.state.viewFormVisibility) {
       var view = <ViewBooking 
@@ -99,12 +99,12 @@ var MainInterface = createReactClass({
         updateClose={this._updateClose}
         deleteBooking={this._deleteBooking} 
       />
-    } else {
+    } else { 
       var view = null
-    }
+    } 
 
     return (  
-          <div>
+          <div> 
             <ControlHeader 
               changeDay={this._changeDay} 
               today={this.state.today} 
