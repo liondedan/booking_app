@@ -13,7 +13,6 @@ var MainInterface = createReactClass({
       today: moment(new Date()).format("YYYY-MM-DD"),
       dayQuery: moment(new Date()).format("YYYY-MM-DD"),
       data: [],
-      bookingIndex: [],
       bookingId:[],
       addFormVisibility: false,
       viewFormVisibility: false,
@@ -24,8 +23,7 @@ var MainInterface = createReactClass({
     this.serverRequest = $.get('./js/data.json', function(result) {
       this.setState({
         data: result 
-      });
-    }.bind(this)); 
+      }); }.bind(this));
   },
 
   componentWillUnmount: function() {
@@ -46,7 +44,7 @@ var MainInterface = createReactClass({
   },
 
   _deleteBooking: function () {
-    var index = this.state.bookingIndex;
+    var index = this.state.bookingId;
     var dataArray = this.state.data; 
     dataArray.splice(index, 1);
     this.setState({
@@ -58,30 +56,28 @@ var MainInterface = createReactClass({
   _viewBooking: function (id, index, realIndex) { 
     console.log("view booking id: " + id);
     console.log("view booking index: " + index);
-    console.log("view booking index: " + realIndex);
-    console.log(this.state.bookingIndex);
+    console.log("view booking real index: " + realIndex);
     this.setState({
       viewFormVisibility: true,
       bookingId: realIndex, 
-      bookingIndex: index, 
       addFormVisibility: false, 
     })
   },
 
   _updateBooking: function (updatedBooking) {
     var partialState = {};
-    this.state.data[this.state.bookingIndex] = updatedBooking;
+    this.state.data[this.state.bookingId] = updatedBooking;
     this.setState(partialState);
 
     this.setState({
-      bookingIndex: null,
+      bookingId: null,
       viewFormVisibility: false,
     }) 
   }, 
 
   _updateClose: function () {
     this.setState({
-      bookingIndex: null, 
+      bookingId: null, 
       viewFormVisibility: false,
     })
   },

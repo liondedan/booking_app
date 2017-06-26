@@ -5,10 +5,10 @@ var AddBookingForm = createReactClass({
 	getInitialState: function() {
 	  return {
 	    pitch: null,
-			firstName: null,
-			email: null,
-			arrivalDate: null,
-			departureDate: null,
+		firstName: null,
+		email: null,
+		arrivalDate: null,
+		departureDate: null,
 	  }
 	}, 
 	
