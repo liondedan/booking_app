@@ -13,10 +13,12 @@ var MainInterface = createReactClass({
       today: moment(new Date()).format("YYYY-MM-DD"),
       dayQuery: moment(new Date()).format("YYYY-MM-DD"),
       data: [],
+      bookingIndex: [],
+      bookingId:[],
       addFormVisibility: false,
       viewFormVisibility: false,
     } 
-  },  
+  }, 
  
   componentDidMount: function() {
     this.serverRequest = $.get('./js/data.json', function(result) {
@@ -51,12 +53,17 @@ var MainInterface = createReactClass({
       data: dataArray, 
     });
     this._updateClose();
-  },
+  }, 
 
-  _viewBooking: function (itemIndex) { 
+  _viewBooking: function (id, index, realIndex) { 
+    console.log("view booking id: " + id);
+    console.log("view booking index: " + index);
+    console.log("view booking index: " + realIndex);
+    console.log(this.state.bookingIndex);
     this.setState({
       viewFormVisibility: true,
-      bookingIndex: itemIndex, 
+      bookingId: realIndex, 
+      bookingIndex: index, 
       addFormVisibility: false, 
     })
   },
@@ -69,7 +76,7 @@ var MainInterface = createReactClass({
     this.setState({
       bookingIndex: null,
       viewFormVisibility: false,
-    })
+    }) 
   }, 
 
   _updateClose: function () {
@@ -89,22 +96,22 @@ var MainInterface = createReactClass({
   _prettyDate: function (sqlDate) {
     return moment(sqlDate).format('ddd, D MMM');
   },
-      
+    
   render: function() {  
     if(this.state.viewFormVisibility) {
       var view = <ViewBooking 
         viewFormVisibility={this.state.viewFormVisibility}
-        booking={this.state.data[this.state.bookingIndex]}
+        booking={this.state.data[this.state.bookingId]}
         updateBooking={this._updateBooking}
         updateClose={this._updateClose}
         deleteBooking={this._deleteBooking} 
       />
-    } else { 
+    } else {
       var view = null
-    } 
+    }
 
     return (  
-          <div> 
+          <div>
             <ControlHeader 
               changeDay={this._changeDay} 
               today={this.state.today} 

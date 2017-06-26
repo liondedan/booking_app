@@ -8,7 +8,7 @@ function BookingRow (props) {
 			var arrival = props.prettyDate(props.booking.arrivalDate);
 			var depart = props.prettyDate(props.booking.departureDate);
 			var rowStatus = _hasPaid(props);
-			console.log(rowStatus);
+			// <span class="badge badge-default">Default</span>
 
 		} else {
 			var arrival = "";
@@ -24,7 +24,6 @@ function BookingRow (props) {
 	} 
 
 	var textCenter = {textAlign: "center"};
-	
 
 	return (
 		  <tr className={rowStatus}>
@@ -34,7 +33,7 @@ function BookingRow (props) {
 				<td>{arrival}</td>
 				<td>{depart}</td>
 				<td style={textCenter}>
-					<i onClick={() => props.viewBooking(props.index)} className="fa fa-bars" aria-hidden="true"></i>
+					<i onClick={() => props.viewBooking(props.booking.id, props.index, props.booking.realIndex)} className="fa fa-bars" aria-hidden="true"></i>
 				</td>
 			</tr>
 	)

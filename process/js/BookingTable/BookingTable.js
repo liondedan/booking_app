@@ -8,8 +8,8 @@ var BookingTable = createReactClass({
     this.props.deleteBooking(position);
   },
 
-  _handleView: function (position) {
-    this.props.viewBooking(position);
+  _handleView: function (id, index, realIndex) {
+    this.props.viewBooking(id, index, realIndex);
   },
 
   _renderByQuery: function(item, index) {
@@ -22,7 +22,7 @@ var BookingTable = createReactClass({
         ) 
       } 
     } else {
-      var bookingOnDay = [];
+      var bookingOnDay = []; 
       bookingOnDay.push(item); 
       return (
            <BookingRow prettyDate={this.props.prettyDate}  viewBooking={this._handleView} booking={bookingOnDay} key={index} index={index} />
@@ -31,11 +31,7 @@ var BookingTable = createReactClass({
   }, 
 
   render: function() {
-
     var bookingData = this.props.bookingData;
-
-
-
     var tableArray = []; 
 
     // loop to 20
@@ -55,6 +51,7 @@ var BookingTable = createReactClass({
 
       // if booking matches loop index add to array 
       if (isBookedForDay) {
+        this.props.bookingData[j].realIndex = (j);
         tableArray.push(this.props.bookingData[j]);
       } else {
         // otherwise add empty item
@@ -66,11 +63,9 @@ var BookingTable = createReactClass({
       return <BookingRow prettyDate={this.props.prettyDate}  viewBooking={this._handleView} booking={item} key={index} index={index} />
      }.bind(this)); 
 
-    console.log(tableArray);
-
     return ( 
       <table className="table table-bordered table-hover table-sm">
-        <thead>
+        <thead className="thead-default">
           <tr>
             <th>#</th>
             <th>Name</th>

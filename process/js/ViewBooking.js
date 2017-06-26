@@ -3,6 +3,7 @@ var createReactClass = require('create-react-class');
 
 var ViewBooking = createReactClass({
   getInitialState: function() {
+    console.log(this.props);
     return {
       pitch: this.props.booking.pitch,
       email: this.props.booking.email,
@@ -63,6 +64,8 @@ var ViewBooking = createReactClass({
 		} else {
 			formVisibility = {"display": "none"};
 		}
+
+
 
     return (
     	<div>
