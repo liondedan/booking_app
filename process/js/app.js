@@ -16,6 +16,7 @@ var MainInterface = createReactClass({
       bookingId:[],
       addFormVisibility: false,
       viewFormVisibility: false,
+      addPitch: null,
     } 
   }, 
  
@@ -82,10 +83,13 @@ var MainInterface = createReactClass({
     })
   },
   
-  _addDisplay: function () {
+  _addDisplay: function (addPitch) {
     var currentState = !this.state.addFormVisibility;
+    var pitch =  addPitch;
+    console.log(pitch);
     this.setState({
-      addFormVisibility: currentState
+      addFormVisibility: currentState,
+      addPitch: pitch
     })
   }, 
 
@@ -104,8 +108,14 @@ var MainInterface = createReactClass({
       />
     } else {
       var view = null
-    }
+    } 
 
+    {if (!this.state.addFormVisibility) {
+      var visibilityVariable = <button onClick={this._addDisplay} className="btn btn-success">Add Booking</button>
+    } else {
+      var visibilityVariable = <AddBooking dayQuery={this.state.dayQuery} addPitch={this.state.addPitch} addBooking={this._addBooking} />
+    }}
+ 
     return (  
           <div>
             <ControlHeader 
@@ -120,15 +130,13 @@ var MainInterface = createReactClass({
               bookingData={this.state.data} 
               dayQuery={this.state.dayQuery}
               prettyDate={this._prettyDate} 
+              addDisplay={this._addDisplay}
             />
  
             {view}
+ 
+            {visibilityVariable}
 
-            <AddBooking   
-              addBooking={this._addBooking} 
-              addDisplay={this._addDisplay} 
-              addFormVisibility={this.state.addFormVisibility}
-            />
         </div> 
       )  
     }      

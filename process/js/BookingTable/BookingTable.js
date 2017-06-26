@@ -30,6 +30,10 @@ var BookingTable = createReactClass({
     }
   }, 
 
+  _handleDisplay: function (addPitch) {
+    this.props.addDisplay(addPitch);
+  },  
+
   render: function() {
     var bookingData = this.props.bookingData;
     var tableArray = []; 
@@ -60,7 +64,7 @@ var BookingTable = createReactClass({
     }
 
     var rowItems = tableArray.map(function(item, index) {
-      return <BookingRow prettyDate={this.props.prettyDate}  viewBooking={this._handleView} booking={item} key={index} index={index} />
+      return <BookingRow prettyDate={this.props.prettyDate}  viewBooking={this._handleView} booking={item} key={index} index={index} addDisplay={this._handleDisplay}/>
      }.bind(this)); 
 
     return ( 

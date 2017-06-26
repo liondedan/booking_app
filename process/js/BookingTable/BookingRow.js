@@ -14,7 +14,7 @@ function BookingRow (props) {
 		} else {
 			var arrival = "";
 			var depart = "";
-			var button = <i onClick={() => props.viewBooking(props.booking.id, props.index, props.booking.realIndex)} className="" aria-hidden="true"></i>;
+			var button = <i onClick={() => props.addDisplay(props.booking.pitch)} className="fa fa-plus" aria-hidden="true"></i>;
 		}  
 
 	function _hasPaid(rowData) {
