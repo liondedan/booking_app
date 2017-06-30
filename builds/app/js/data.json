@@ -4,7 +4,7 @@
     "pitch": 1,
     "firstName": "Buffy",
     "email": "Hassum Harrod",
-    "arrivalDate": "2017-06-25",
+    "arrivalDate": "2017-06-29",
     "departureDate": "2017-06-27",
     "paid": "no"
   },
@@ -13,7 +13,7 @@
     "pitch": 4,
     "firstName": "Spot",
     "email": "Constance Smith",
-    "arrivalDate": "2017-06-25",
+    "arrivalDate": "2017-06-29",
     "departureDate": "2017-06-30",
     "paid": "yes"
   },
@@ -22,8 +22,8 @@
     "pitch": 5,
     "firstName": "Troy",
     "email": "Constance Smith",
-    "arrivalDate": "2017-06-25",
-    "departureDate": "2017-06-27",
+    "arrivalDate": "2017-06-29",
+    "departureDate": "2017-06-30",
     "paid": "yes"
   },
   {
@@ -32,7 +32,7 @@
     "firstName": "Dan",
     "email": "info@thinkdan.co.uk",
     "arrivalDate": "2017-06-22",
-    "departureDate": "2017-06-23",
+    "departureDate": "2017-07-02",
     "paid": "yes"
   },
   {
@@ -41,7 +41,7 @@
     "firstName": "Dan",
     "email": "info@thinkdan.co.uk",
     "arrivalDate": "2017-06-23",
-    "departureDate": "2017-06-28",
+    "departureDate": "2017-07-01",
     "paid": "yes"
   },
   {
@@ -49,8 +49,8 @@
     "pitch": 11,
     "firstName": "Dan",
     "email": "info@thinkdan.co.uk",
-    "arrivalDate": "2017-06-25",
-    "departureDate": "2017-06-29",
+    "arrivalDate": "2017-06-29",
+    "departureDate": "2017-07-05",
     "paid": "yes"
   }
 ]

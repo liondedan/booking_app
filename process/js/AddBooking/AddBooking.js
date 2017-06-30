@@ -11,14 +11,18 @@ var AddBooking = createReactClass({
 		departureDate: null,
 	  }
 	}, 
+
+	_validateDate: function (arrival, depart) {
+
+	},
 	
 	_getRefs: function (e) {
 		var tempBooking = {
-		pitch: this.state.pitch,
-		firstName: this.state.firstName,
-		email: this.state.email,
-		arrivalDate: this.state.arrivalDate,
-		departureDate: this.state.departureDate,
+			pitch: this.state.pitch,
+			firstName: this.state.firstName,
+			email: this.state.email,
+			arrivalDate: this.state.arrivalDate,
+			departureDate: this.state.departureDate,
 		}
 		this.props.addBooking(tempBooking);
 		e.preventDefault();
@@ -35,7 +39,7 @@ var AddBooking = createReactClass({
 
   render: function() { 
 		return (
-			<form>
+			<form data-validate>
 	    	<div className="form-group row">
 	    	  <label className="col-2 col-form-label">Pitch</label>
 	    	  <div className="col-10">
@@ -49,9 +53,9 @@ var AddBooking = createReactClass({
 	        </div>
 	      </div>
 	      <div className="form-group row">
-	        <label className="col-2 col-form-label">Email</label>
+	        <label htmlFor="email" className="col-2 col-form-label">Email</label>
 	        <div className="col-10">
-	          <input onChange={this._handleInputChange} className="form-control" ref="inputEmail" type="email"  name="email"/>
+	          <input required onChange={this._handleInputChange} className="form-control" ref="inputEmail" type="email" id="email"  name="email"/>
 	        </div>
 	      </div>
 	      
