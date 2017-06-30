@@ -98,7 +98,7 @@ var MainInterface = createReactClass({
   },
     
   render: function() {  
-    if(this.state.viewFormVkisibility) {
+    if(this.state.viewFormVisibility) {
       var view = <ViewBooking 
         viewFormVisibility={this.state.viewFormVisibility}
         booking={this.state.data[this.state.bookingId]}
