@@ -14,13 +14,22 @@ var ControlHeader = createReactClass({
   	this.props.changeDay(event.target.value);
   },
 
+  handleAddDisplay : function () {
+    this.props.addDisplay();
+  },
+
   render: function() {
 
     var todayPretty = this.props.prettyDate(this.props.dayQuery);
     return (
 		<div>
-        <h5>{todayPretty}</h5>
-	      <div className="form-group row">
+        <div className="row">
+          <div className="col-12">
+            <h5 className="pull-left">{todayPretty}</h5>
+            <button onClick={this.handleAddDisplay} className="btn btn-sm pull-right btn-success"><i className="fa fa-plus pr-1" aria-hidden="true"></i>Add Booking</button>
+          </div>
+	      </div>
+        <div className="form-group row">
           <div className="col-4">        
             <div className="btn-group" role="group" aria-label="Basic example">
               <button className="btn btn-secondary btn-sm" onClick={()=>this.handleDateChange(-1)}>

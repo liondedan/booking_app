@@ -106,15 +106,13 @@ var MainInterface = createReactClass({
         updateClose={this._updateClose}
         deleteBooking={this._deleteBooking} 
       />
-    } else {
+    } else { 
       var view = null
     } 
 
-    {if (!this.state.addFormVisibility) {
-      var visibilityVariable = <button onClick={this._addDisplay} className="btn btn-success">Add Booking</button>
-    } else {
-      var visibilityVariable = <AddBooking dayQuery={this.state.dayQuery} addPitch={this.state.addPitch} addBooking={this._addBooking} />
-    }}
+    if (this.state.addFormVisibility) {
+      var visibilityVariable = <AddBooking dayQuery={this.state.dayQuery} addDisplay={this._addDisplay} addPitch={this.state.addPitch} addBooking={this._addBooking} />
+    } 
  
     return (  
           <div>
@@ -123,6 +121,7 @@ var MainInterface = createReactClass({
               today={this.state.today} 
               dayQuery={this.state.dayQuery}
               prettyDate={this._prettyDate} 
+              addDisplay={this._addDisplay} 
             />
             <BookingTable 
               deleteBooking={this._deleteBooking} 
@@ -132,9 +131,7 @@ var MainInterface = createReactClass({
               prettyDate={this._prettyDate} 
               addDisplay={this._addDisplay}
             />
- 
-            {view}
- 
+            {view} 
             {visibilityVariable}
 
         </div> 
