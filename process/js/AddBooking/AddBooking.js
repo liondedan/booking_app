@@ -39,6 +39,10 @@ var AddBooking = createReactClass({
 
   render: function() { 
 		return (
+
+			
+
+			
 			<form data-validate>
 	    	<div className="form-group row">
 	    	  <label className="col-2 col-form-label">Pitch</label>
@@ -55,7 +59,7 @@ var AddBooking = createReactClass({
 	      <div className="form-group row">
 	        <label htmlFor="email" className="col-2 col-form-label">Email</label>
 	        <div className="col-10">
-	          <input required onChange={this._handleInputChange} className="form-control" ref="inputEmail" type="email" id="email"  name="email"/>
+	          <input onChange={this._handleInputChange} className="form-control" ref="inputEmail" type="email" id="email"  name="email"/>
 	        </div>
 	      </div>
 	      
