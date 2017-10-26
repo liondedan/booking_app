@@ -9,7 +9,7 @@ var AddBooking = createReactClass({
 			firstName: null,
 			email: null,
 			arrivalDate: this.props.dayQuery,
-			departureDate: null,
+			departureDate: this.props.dayQuery
 	  }
 	}, 
 
@@ -19,6 +19,7 @@ var AddBooking = createReactClass({
    },
 
 	_getRefs: function (e) {
+
 		var tempBooking = {
 			pitch: this.state.pitch,
 			firstName: this.state.firstName,
@@ -26,15 +27,44 @@ var AddBooking = createReactClass({
 			arrivalDate: this.state.arrivalDate,
 			departureDate: this.state.departureDate,
 		}
-		this.props.addBooking(tempBooking);
-		e.preventDefault();
-		$(ReactDOM.findDOMNode(this)).modal('hide');
+
+		/* Fix It */
+		let formError = false;
+		for (var key in tempBooking) {
+	    if(tempBooking[key] == null) {
+				console.log([key] + " is null")
+				formError = true;
+			}
+		}
+
+		if (formError) {
+			console.log("form error is true");
+			e.preventDefault();
+		} else {
+			this.props.addBooking(tempBooking);
+			e.preventDefault();
+			$(ReactDOM.findDOMNode(this)).modal('hide');
+		}
 	}, 
+
+	_validateField: function (field, value) {
+		if (value == "") {
+			console.log("value is empty");
+			field.className += " form-control-danger";
+			console.log(field.parentElement);
+			this.setState({
+			  formError: true 
+			});
+		}
+	},
 
 	_handleInputChange: function (event) {
 		const target = event.target;
 		const value = target.type === 'checkbox' ? target.checked : target.value;
 		const name = target.name;
+
+		this._validateField(target, value)
+
 		var partialState = {};
 		partialState[name] = value;
 		this.setState(partialState);
@@ -53,7 +83,7 @@ var AddBooking = createReactClass({
 			        </button>
 			      </div>
 			      <div className="modal-body">
-	        		<form>
+	        		<form id="add-booking-form">
 	            	<div className="form-group row">
 	            	  <label className="col-2 col-form-label">Pitch</label>
 	            	  <div className="col-10">
@@ -81,7 +111,7 @@ var AddBooking = createReactClass({
 	              </div><div className="form-group row">
 	                <label className="col-2 col-form-label">Departure Date</label>
 	                <div className="col-10"> 
-	                  <input onChange={this._handleInputChange} className="form-control" ref="departureDate" name="departureDate" type="date"/>
+	                  <input defaultValue={this.props.dayQuery} onChange={this._handleInputChange} className="form-control" ref="departureDate" name="departureDate" type="date"/>
 	                </div>
 	              </div>
 	          	</form>

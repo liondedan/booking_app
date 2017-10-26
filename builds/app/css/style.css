@@ -12,3 +12,7 @@
 .global_date_picker {
 	max-width: 260px;
 }
+
+input:invalid {
+  border: 1px solid red;
+}
