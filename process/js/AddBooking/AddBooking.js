@@ -47,23 +47,10 @@ var AddBooking = createReactClass({
 		}
 	}, 
 
-	_validateField: function (field, value) {
-		if (value == "") {
-			console.log("value is empty");
-			field.className += " form-control-danger";
-			console.log(field.parentElement);
-			this.setState({
-			  formError: true 
-			});
-		}
-	},
-
 	_handleInputChange: function (event) {
 		const target = event.target;
 		const value = target.type === 'checkbox' ? target.checked : target.value;
 		const name = target.name;
-
-		this._validateField(target, value)
 
 		var partialState = {};
 		partialState[name] = value;

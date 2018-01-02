@@ -25,6 +25,8 @@ var MainInterface = createReactClass({
       this.setState({
         data: result 
       }); }.bind(this));
+
+    document.querySelector('.loader').setAttribute('hidden', true);
   },
 
   componentWillUnmount: function() {
