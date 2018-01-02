@@ -9,6 +9,7 @@ var AddBooking = createReactClass({
 			firstName: this.refs.inputFirstName.value,
 			email: this.refs.inputEmail.value,
 			arrivalDate: this.refs.inputDate.value,
+			depatureDate: this.refs.inputDate.value,
 		}
 		this.props.addBooking(tempBooking);
 		e.preventDefault();
@@ -49,9 +50,14 @@ var AddBooking = createReactClass({
 		        </div>
 		      </div>
 		      <div className="form-group row">
-		        <label className="col-2 col-form-label">Date</label>
+		        <label className="col-2 col-form-label">Arrival Date</label>
 		        <div className="col-10">
-		          <input className="form-control" ref="inputDate" type="date" id="example-date-input"/>
+		          <input className="form-control" ref="arrivalDate" type="date" id="example-date-input"/>
+		        </div>
+		      </div><div className="form-group row">
+		        <label className="col-2 col-form-label">Depature Date</label>
+		        <div className="col-10">
+		          <input className="form-control" ref="depatureDate" type="date" id="example-date-input"/>
 		        </div>
 		      </div>
 		      <button onClick={this._handleDisplay} type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>

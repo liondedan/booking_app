@@ -13,8 +13,10 @@ var MainInterface = createReactClass({
       today: moment(new Date()).format("YYYY-MM-DD"),
       dayQuery: moment(new Date()).format("YYYY-MM-DD"),
       data: [],
+      bookingId:[],
       addFormVisibility: false,
       viewFormVisibility: false,
+      addPitch: null,
     } 
   }, 
  
@@ -22,8 +24,9 @@ var MainInterface = createReactClass({
     this.serverRequest = $.get('./js/data.json', function(result) {
       this.setState({
         data: result 
-      });
-    }.bind(this)); 
+      }); }.bind(this));
+
+    document.querySelector('.loader').setAttribute('hidden', true);
   },
 
   componentWillUnmount: function() {
@@ -36,7 +39,7 @@ var MainInterface = createReactClass({
 
   _addBooking: function(temptBooking) {
     var temptData = this.state.data;
-    temptData.push(temptBooking);
+    temptData.push(temptBooking); 
     this.setState({ 
       data: temptData, 
       addFormVisibility: false, 
@@ -44,84 +47,97 @@ var MainInterface = createReactClass({
   },
 
   _deleteBooking: function () {
-    var index = this.state.bookingIndex;
-    var dataArray = this.state.data;
+    var index = this.state.bookingId;
+    var dataArray = this.state.data; 
     dataArray.splice(index, 1);
     this.setState({
-      data: dataArray,
+      data: dataArray, 
     });
     this._updateClose();
-  },
+  }, 
 
-  _viewBooking: function (itemIndex) { 
+  _viewBooking: function (id, index, realIndex) { 
+    console.log("view booking id: " + id);
+    console.log("view booking index: " + index);
+    console.log("view booking real index: " + realIndex);
     this.setState({
       viewFormVisibility: true,
-      bookingIndex: itemIndex, 
+      bookingId: realIndex, 
       addFormVisibility: false, 
     })
   },
 
   _updateBooking: function (updatedBooking) {
     var partialState = {};
-    this.state.data[this.state.bookingIndex] = updatedBooking;
+    this.state.data[this.state.bookingId] = updatedBooking;
     this.setState(partialState);
 
     this.setState({
-      bookingIndex: null,
+      bookingId: null,
       viewFormVisibility: false,
-    })
+    }) 
   }, 
 
   _updateClose: function () {
     this.setState({
-      bookingIndex: null, 
+      bookingId: null, 
       viewFormVisibility: false,
     })
   },
   
-  _addDisplay: function () {
+  _addDisplay: function (addPitch) {
     var currentState = !this.state.addFormVisibility;
+    var pitch =  addPitch;
+    console.log(pitch);
     this.setState({
-      addFormVisibility: currentState
+      addFormVisibility: currentState,
+      addPitch: pitch
     })
   }, 
+
+  _prettyDate: function (sqlDate) {
+    return moment(sqlDate).format('ddd, D MMM');
+  },
     
   render: function() {  
     if(this.state.viewFormVisibility) {
       var view = <ViewBooking 
         viewFormVisibility={this.state.viewFormVisibility}
-        booking={this.state.data[this.state.bookingIndex]}
+        booking={this.state.data[this.state.bookingId]}
         updateBooking={this._updateBooking}
         updateClose={this._updateClose}
         deleteBooking={this._deleteBooking} 
       />
-    } else {
+    } else { 
       var view = null
-    }
+    } 
 
-    return (
+    if (this.state.addFormVisibility) {
+      var visibilityVariable = <AddBooking dayQuery={this.state.dayQuery} addDisplay={this._addDisplay} addPitch={this.state.addPitch} addBooking={this._addBooking} />
+    } 
+ 
+    return (  
           <div>
             <ControlHeader 
               changeDay={this._changeDay} 
               today={this.state.today} 
               dayQuery={this.state.dayQuery}
+              prettyDate={this._prettyDate} 
+              addDisplay={this._addDisplay} 
             />
             <BookingTable 
               deleteBooking={this._deleteBooking} 
               viewBooking={this._viewBooking} 
               bookingData={this.state.data} 
               dayQuery={this.state.dayQuery}
+              prettyDate={this._prettyDate} 
+              addDisplay={this._addDisplay}
             />
+            {view} 
+            {visibilityVariable}
 
-            {view}
-
-            <AddBooking  
-              addBooking={this._addBooking} 
-              addDisplay={this._addDisplay} 
-              addFormVisibility={this.state.addFormVisibility}
-            />
         </div> 
-      ) 
+      )  
     }      
 });   
    
@@ -129,3 +145,4 @@ ReactDOM.render(
   <MainInterface />,   
   document.getElementById('app')    
 );        
+ 
